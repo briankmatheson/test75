@@ -1,0 +1,43 @@
+control-plane:
+  hosts:
+    147.75.196.105:
+      ansible_host: 147.75.196.105
+    147.75.39.1:
+      ansible_host: 147.75.39.1
+    147.75.39.153:
+      ansible_host: 147.75.39.153
+node:
+  hosts:
+    147.75.74.111:
+      ansible_host: 147.75.74.111
+      node_pool: worker
+    147.75.79.53:
+      ansible_host: 147.75.79.53
+      node_pool: worker
+    147.75.39.67:
+      ansible_host: 147.75.39.67
+      node_pool: worker
+    147.75.196.169:
+      ansible_host: 147.75.196.169
+      node_pool: worker
+    147.75.79.67:
+      ansible_host: 147.75.79.67
+      node_pool: storage
+    147.75.74.37:
+      ansible_host: 147.75.74.37
+      node_pool: storage
+    147.75.67.253:
+      ansible_host: 147.75.67.253
+      node_pool: storage
+    147.75.196.239:
+      ansible_host: 147.75.196.239
+      node_pool: storage
+bastion: {}
+all:
+  vars:
+    ansible_port: 22
+    ansible_ssh_private_key_file: ~/.ssh/id_rsa
+    ansible_user: root
+    control_plane_endpoint_override: 147.75.196.105
+    order: sorted
+    version: v1beta1
