@@ -12,6 +12,7 @@ spec:
       certificate: {}
       keepalived:
         enabled: true
+        interface: bond0
     networking:
       podSubnet: 192.168.0.0/16
       serviceSubnet: 10.75.0.0/18
@@ -66,10 +67,15 @@ spec:
       enabled: true
       values: |-
         configInline:
+          peers:
+          - my-asn: 65000
+            peer-asn: 65480
+            peer-address: 127.0.0.1
           address-pools:
-          - name: default
-            protocol: layer2
-            addresses: 147.75.107.32/30
+          - name: packet-public
+            protocol: bgp
+            addresses:
+            - 147.75.107.32/32
     - name: opsportal
       enabled: true
     - name: prometheus

@@ -38,6 +38,6 @@ all:
     ansible_port: 22
     ansible_ssh_private_key_file: ~/.ssh/id_rsa
     ansible_user: root
-    control_plane_endpoint_override: 147.75.196.105
+    control_plane_endpoint: 147.75.107.32/32
     order: sorted
     version: v1beta1
