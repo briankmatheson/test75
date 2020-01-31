@@ -50,15 +50,15 @@ spec:
     - name: dex-k8s-authenticator
       enabled: true
     - name: elasticsearch
-      enabled: false
+      enabled: true
     - name: elasticsearchexporter
-      enabled: false
+      enabled: true
     - name: fluentbit
-      enabled: false
+      enabled: true
     - name: helm
       enabled: true
     - name: kibana
-      enabled: false
+      enabled: true
     - name: kommander
       enabled: true
     - name: localvolumeprovisioner
@@ -76,17 +76,20 @@ spec:
             protocol: bgp
             addresses:
             - 147.75.107.32/32
+            - 147.75.107.33/32
+            - 147.75.107.34/32
+            - 147.75.107.35/32
     - name: opsportal
       enabled: true
     - name: prometheus
-      enabled: false
+      enabled: true
     - name: prometheusadapter
-      enabled: false
+      enabled: true
     - name: traefik
       enabled: true
     - name: traefik-forward-auth
       enabled: true
     - name: velero
-      enabled: false
+      enabled: true
   version: v1.1.5
 

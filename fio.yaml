@@ -1,0 +1,49 @@
+---
+kind: Pod
+apiVersion: v1
+metadata:
+  namespace: demo
+  name: fio
+spec:
+  containers:
+  - name: fio
+    image: ljishen/fio
+    command:
+      - "fio"
+      - "--randrepeat=0"
+      - "--verify=0"
+      - "--ioengine=libaio"
+      - "--direct=0"
+      - "--name=randrw"
+      - "--directory=/data"
+      - "--numjobs=8"
+      - "--iodepth=4"
+      - "--blocksize_range=32k-512k"
+      - "--size=5G"
+      - "--readwrite=randrw"
+      - "--time_based"
+      - "--ramp_time=15s"
+      - "--runtime=2m"
+      - "--group_reporting"
+    volumeMounts:
+      - name: data
+        mountPath: /data
+  nodeSelector:
+    type: worker
+  volumes:
+    - name: data
+      persistentVolumeClaim:
+        claimName: fio-data
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  namespace: demo
+  name: fio-data
+spec:
+  storageClassName: cstor
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1000Gi

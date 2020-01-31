@@ -3,3 +3,4 @@
 admin.conf
 runs
 cluster.tmp.yaml
+registry-secret.sh
