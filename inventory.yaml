@@ -32,6 +32,12 @@ node:
     147.75.196.239:
       ansible_host: 147.75.196.239
       node_pool: storage
+    165.227.65.143:
+      ansible_host: 165.227.65.143
+      node_pool: storage
+    167.71.172.39:
+      ansible_host: 167.71.172.39
+      node_pool: storage
 bastion: {}
 all:
   vars:
