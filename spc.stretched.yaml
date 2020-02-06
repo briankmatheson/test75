@@ -1,0 +1,38 @@
+---
+kind: StoragePoolClaim
+apiVersion: openebs.io/v1alpha1
+metadata:
+  name: cstor-stretched-claim
+  annotations:
+    cas.openebs.io/config: |
+      - name: PoolResourceRequests
+        value: |-
+          memory: 2Gi
+      - name: PoolResourceLimits
+        value: |-
+          memory: 4Gi
+spec:
+  name: cstor-stretched-claim
+  type: disk
+  poolSpec:
+    poolType: striped
+  blockDevices:
+    blockDeviceList:
+      - blockdevice-042306aa826ead955c8fcf16a95c3ab5
+      - blockdevice-1ef01d33b369d4dd133f443c1ff7df68
+      - blockdevice-aeeed393397ef75eb3b1a0c396ab0346
+      - blockdevice-73b97cf5940bc283774e940836e8793b
+---
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: cstor-stretched
+  annotations:
+    openebs.io/cas-type: cstor
+    cas.openebs.io/config: |
+      - name: StoragePoolClaim
+        value: "cstor-stretched-claim"
+      - name: ReplicaCount
+        value: "3"
+    storageclass.kubernetes.io/is-default-class: 'false'
+provisioner: openebs.io/provisioner-iscsi
