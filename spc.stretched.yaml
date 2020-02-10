@@ -18,10 +18,10 @@ spec:
     poolType: striped
   blockDevices:
     blockDeviceList:
-      - blockdevice-042306aa826ead955c8fcf16a95c3ab5
+      - blockdevice-e7ce468b38ad829152ff01397302a101
+      - blockdevice-353a6330fd1cba9b12f8747c14a5d47c
+      - blockdevice-8cab95af164e58c51ed8f7f12f66fd17
       - blockdevice-1ef01d33b369d4dd133f443c1ff7df68
-      - blockdevice-aeeed393397ef75eb3b1a0c396ab0346
-      - blockdevice-73b97cf5940bc283774e940836e8793b
 ---
 kind: StorageClass
 apiVersion: storage.k8s.io/v1
